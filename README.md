@@ -25,7 +25,7 @@ This will open the notebook in your default web browser.
 
 Make a couple adjustments, as needed, to load local data and select desired datasets:
 
- 1. Adjust the value of the `path` variable to point to a locally-saved copy of your FCS file. 
+ 1. Adjust the value of the `path` variable to point to a locally-saved copy of your FCS file. The desired FCS file could be put into the same directory as this notebook.
  2. Adjust the desired column names in the `colsOfInterest`; these are used to render the three axes of the scatterplot.
 
 After making adjustments, re-run the Jupyter notebook. To do this, pull down the `Kernel` menu and select `Restart & Run All`.
