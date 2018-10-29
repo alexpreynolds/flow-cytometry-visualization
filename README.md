@@ -2,7 +2,13 @@
 
 Flow cytometry dataset visualization demo, using Jupyter, Plotly, and `fcsparser`.
 
-To run this locally, install required Python libraries:
+To run this quickly, you may view the Jupyter notebook in *nbviewer*:
+
+https://nbviewer.jupyter.org/github/alexpreynolds/flow-cytometry-visualization/blob/master/FlowCytometryVisualization.ipynb
+
+It can be useful to run this locally, to make tweaks and see how things work.
+
+First, install required Python libraries:
 
 ```
 $ pip install fcsparser
