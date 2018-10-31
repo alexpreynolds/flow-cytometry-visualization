@@ -29,6 +29,14 @@ $ jupyter notebook FlowCytometryVisualization.ipynb
 
 This will open the notebook in your default web browser.
 
+<aside class="warning">
+Note: If you run into `IOPub` errors, adjust `jupyter` settings when loading the notebook:
+
+```
+$ jupyter notebook --NotebookApp.iopub_data_rate_limit=1.0e10 FlowCytometryVisualization.ipynb
+```
+</aside>
+
 Make a couple adjustments, as needed, to load local data and select desired datasets:
 
  1. Adjust the value of the `path` variable to point to a locally-saved copy of your FCS file. The desired FCS file could be put into the same directory as this notebook.
