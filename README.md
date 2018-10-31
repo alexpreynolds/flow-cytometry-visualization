@@ -95,7 +95,7 @@ Debug: Writing [/tmp/fcsImages/01-TripDay5-D1-LAG3/index.html] and [/tmp/fcsImag
 
 In this example, each of the subfolders `/tmp/fcsImages/<FCS-dataset>` contain `index.html` and `figure.png`.
 
-The following, for instance, will open the PNG file in your default image viewer:
+The following, for instance, will open a PNG file in your default image viewer:
 
 ```
 $ open /tmp/fcsImages/01-TripDay5-B1-PD1/figure.png
