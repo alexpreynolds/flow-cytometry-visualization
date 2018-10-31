@@ -2,7 +2,7 @@
 
 This project demonstrates visualizing flow cytometry datasets, using Jupyter, Plotly, and `fcsparser`. 
 
-A command-line script is included called `batchFCSPlot.py` which enables batch conversion of FCS files into PNG-formatted scatterplots. This script makes uses of Google Puppeteer and Chromium.
+A command-line script is included called `batchFCSPlot.py` that does batch conversion of FCS files to PNG-formatted scatterplots. This script makes uses of Google Puppeteer and Chromium, in addition to Plotly and `fcsparser`.
 
 ## Jupyter notebook
 
@@ -56,7 +56,7 @@ A PNG file of the scatterplot can be exported by clicking on the camera icon in 
 
 ### Prerequisites
 
-Batch generation requires the installation of the `pyppeteer` Python library, which will in turn install Chromium, a version of Google Chrome that is used here to generate and export PNG files:
+Batch generation requires the additional installation of the `pyppeteer` Python library, which will in turn install Chromium, a version of Google Chrome that is used here to generate and export PNG files:
 
 ```
 $ pip install pyppeteer
@@ -68,7 +68,7 @@ $ pip install pyppeteer
 $ ./batchFCSPlot.py --inputDir <directory-of-FCS-files> --outputDir <directory-for-image-files> --fcsColumns <list-of-column-headers> [ --gateX <float> --gateY <float> --gateZ <float>] [ --xRangeMin <float> --xRangeMax <float> --yRangeMin <float> --yRangeMax <float> --zRangeMin <float> --zRangeMax <float> ]
 ```
 
-The first time the `batchFCSPlot.py` script is run, you will be prompted to grant permissions for Chromium to access your screen display. Just click on the "Allow" button for the script to proceed. You should only need to this once; afterwards, the browser will make screenshots in the background.
+The first time the `batchFCSPlot.py` script is run, you may be prompted to grant permissions for Chromium to access your screen display. Just click on the "Allow" button for the script to proceed. You should only need to do this once; afterwards, the browser will make screenshots in the background.
 
 Gate values `--gateX`, `--gateY`, and `--gateZ` are optional and are set initially to defaults of `3.55`, `3.2`, and `3.02`, respectively.
 
@@ -93,4 +93,10 @@ Debug: Writing [/tmp/fcsImages/01-TripDay5-A1/index.html] and [/tmp/fcsImages/01
 Debug: Writing [/tmp/fcsImages/01-TripDay5-D1-LAG3/index.html] and [/tmp/fcsImages/01-TripDay5-D1-LAG3/figure.png]...
 ```
 
-In this example, each of the subfolders `/tmp/fcsImages/<FCS>` contain `index.html` and `figure.png`.
+In this example, each of the subfolders `/tmp/fcsImages/<FCS-dataset>` contain `index.html` and `figure.png`.
+
+The following, for instance, will open the PNG file in your default image viewer:
+
+```
+$ open /tmp/fcsImages/01-TripDay5-B1-PD1/figure.png
+```
