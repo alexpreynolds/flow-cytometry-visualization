@@ -65,12 +65,14 @@ $ pip install pyppeteer
 ### Usage
 
 ```
-$ ./batchFCSPlot.py --inputDir <directory-of-FCS-files> --outputDir <directory-for-image-files> --fcsColumns <list-of-column-headers> [ --gateX <float> --gateY <float> --gateZ <float>]
+$ ./batchFCSPlot.py --inputDir <directory-of-FCS-files> --outputDir <directory-for-image-files> --fcsColumns <list-of-column-headers> [ --gateX <float> --gateY <float> --gateZ <float>] [ --xRangeMin <float> --xRangeMax <float> --yRangeMin <float> --yRangeMax <float> --zRangeMin <float> --zRangeMax <float> ]
 ```
 
 The first time the `batchFCSPlot.py` script is run, you will be prompted to grant permissions for Chromium to access your screen display. Just click on the "Allow" button for the script to proceed. You should only need to this once; afterwards, the browser will make screenshots in the background.
 
-Gate-x, -y, and -z values are optional and set initially to `3.55`, `3.2`, and `3.02`, respectively.
+Gate-x, -y, and -z values are optional and set initially to defaults of `3.55`, `3.2`, and `3.02`, respectively.
+
+Each pair of `--xRangeMin`, `--xRangeMax`, `--yRangeMin`, `--yRangeMax`, `--zRangeMin`, and `--zRangeMax` are set to a default minimum of `0` and a maximum `6`, respectively.
 
 ### Example
 
