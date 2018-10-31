@@ -39,7 +39,7 @@ $ jupyter notebook --NotebookApp.iopub_data_rate_limit=1.0e10 FlowCytometryVisua
 
 Make a couple adjustments, as needed, to load local data and select desired datasets:
 
- 1. Adjust the value of the `path` variable to point to a locally-saved copy of your FCS file. The desired FCS file could be put into the `data` subdirectory in this notebook's directory.
+ 1. Adjust the value of the `fcsBaseFn` variable to point to a locally-saved copy of your FCS file. The desired FCS file could be put into the `data` subdirectory in this notebook's directory.
  2. Adjust the desired column names in the `colsOfInterest`; these are used to render the three axes of the scatterplot.
 
 After making adjustments, re-run the Jupyter notebook. To do this, pull down the `Kernel` menu and select `Restart & Run All`.
