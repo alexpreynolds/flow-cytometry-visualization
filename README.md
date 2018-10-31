@@ -1,6 +1,10 @@
 # flow-cytometry-visualization
 
-Flow cytometry dataset visualization demo, using Jupyter, Plotly, and `fcsparser`.
+This project demonstrates visualizing flow cytometry datasets, using Jupyter, Plotly, and `fcsparser`. 
+
+A command-line script is included called `batchFCSPlot.py` which enables batch conversion of FCS files into PNG-formatted scatterplots. This script makes uses of Google Puppeteer and Chromium.
+
+## Jupyter notebook
 
 To run this quickly, you may view the Jupyter notebook in *nbviewer*:
 
@@ -17,7 +21,7 @@ $ pip install plotly
 $ pip install numpy
 ```
 
-Installing these libraries could take a few minutes.
+Installing these libraries could take a few minutes, depending on what is already installed.
 
 The `fcsparser` library is used to open and process FCS files. The other libraries are used for processing and visualizing the data.
 
@@ -47,3 +51,44 @@ After making adjustments, re-run the Jupyter notebook. To do this, pull down the
 The scatterplot is available at the bottom of the notebook and can be interacted with click-and-drag and scrollwheel actions, which rotate and zoom the plot. 
 
 A PNG file of the scatterplot can be exported by clicking on the camera icon in the top-right corner of the scatterplot window.
+
+## Batch plot generation
+
+### Prerequisites
+
+Batch generation requires the installation of the `pyppeteer` Python library, which will in turn install Chromium, a version of Google Chrome that is used here to generate and export PNG files:
+
+```
+$ pip install pyppeteer
+```
+
+### Usage
+
+```
+$ ./batchFCSPlot.py --inputDir <directory-of-FCS-files> --outputDir <directory-for-image-files> --fcsColumns <list-of-column-headers> [ --gateX <float> --gateY <float> --gateZ <float>]
+```
+
+The first time the `batchFCSPlot.py` script is run, you will be prompted to grant permissions for Chromium to access your screen display. Just click on the "Allow" button for the script to proceed. You should only need to this once; afterwards, the browser will make screenshots in the background.
+
+Gate-x, -y, and -z values are optional and set initially to `3.55`, `3.2`, and `3.02`, respectively.
+
+### Example
+
+When run from within this project directory:
+
+```
+$ ./batchFCSPlot.py --inputDir data --outputDir /tmp/fcsImages --fcsColumns "APC-H,PB450-H,ECD-H"
+Debug: Writing [/tmp/fcsImages/01-TripDay5-E2-Untreated/index.html] and [/tmp/fcsImages/01-TripDay5-E2-Untreated/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-B1-PD1/index.html] and [/tmp/fcsImages/01-TripDay5-B1-PD1/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-C1-TIM3/index.html] and [/tmp/fcsImages/01-TripDay5-C1-TIM3/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-E1-Untreated/index.html] and [/tmp/fcsImages/01-TripDay5-E1-Untreated/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-B2-PD1/index.html] and [/tmp/fcsImages/01-TripDay5-B2-PD1/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-A3-unstained/index.html] and [/tmp/fcsImages/01-TripDay5-A3-unstained/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-D2-LAG3/index.html] and [/tmp/fcsImages/01-TripDay5-D2-LAG3/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-A2-multiplex/index.html] and [/tmp/fcsImages/01-TripDay5-A2-multiplex/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-C2-TIM3/index.html] and [/tmp/fcsImages/01-TripDay5-C2-TIM3/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-A1/index.html] and [/tmp/fcsImages/01-TripDay5-A1/figure.png]...
+Debug: Writing [/tmp/fcsImages/01-TripDay5-D1-LAG3/index.html] and [/tmp/fcsImages/01-TripDay5-D1-LAG3/figure.png]...
+```
+
+In this example, each of the subfolders `/tmp/fcsImages/<FCS>` contain `index.html` and `figure.png`.
