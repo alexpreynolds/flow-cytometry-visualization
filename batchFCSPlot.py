@@ -103,17 +103,30 @@ class BatchFCSPlot(object):
 
         figLayout = go.Layout(
             title=title,
-            width=1024,
-            height=1024,
+            width=2048,
+            height=2048,
+            font=dict(
+                family='".SFNSDisplay-Regular", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Calibri", Arial, sans-serif', 
+                size=32, 
+                color='#000'),
             scene = dict(
                 camera=dict(
                     up=dict(x=0, y=0, z=1),
                     center=dict(x=0, y=0, z=0),
-                    eye=dict(x=-1.25, y=-1.15, z=1.6)
+                    eye=dict(x=-1.25, y=-1.15, z=1.8)
                 ),
-                xaxis = dict(title=xCol.name, range = xRange),
-                yaxis = dict(title=yCol.name, range = yRange),
-                zaxis = dict(title=zCol.name, range = zRange),
+                xaxis = dict(
+                    title=xCol.name, 
+                    range=xRange,
+                    tickfont=dict(size=22)),
+                yaxis = dict(
+                    title=yCol.name, 
+                    range=yRange,
+                    tickfont=dict(size=22)),
+                zaxis = dict(
+                    title=zCol.name, 
+                    range=zRange,
+                    tickfont=dict(size=22)),
                 aspectmode = 'cube')
         )
 
@@ -122,14 +135,14 @@ class BatchFCSPlot(object):
         htmlOutputFn = os.path.join(outputDir, 'index.html')
         pngOutputFn = os.path.join(outputDir, 'figure.png')
         sys.stderr.write("Debug: Writing [%s] and [%s]...\n" % (htmlOutputFn, pngOutputFn))
-        plot(fig, image=None, filename=htmlOutputFn, image_width=1280, image_height=1280, auto_open=False)
+        plot(fig, image=None, filename=htmlOutputFn, image_width=2560, image_height=2560, auto_open=False)
         asyncio.get_event_loop().run_until_complete(self.imageViaPyppeteer("file://" + htmlOutputFn, pngOutputFn))
 
     async def imageViaPyppeteer(self, htmlUrl, pngPath):
         browser = await launch({
             'headless': False,
-            'width': '1280px', 
-            'height': '1280px', 
+            'width': '2560px', 
+            'height': '2560px', 
             'deviceScaleFactor': 1})
         page = await browser.newPage()
         await page.goto(htmlUrl)
